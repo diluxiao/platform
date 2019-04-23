@@ -5,6 +5,14 @@
 /*
 
 #以下是排除忽略的文件,即:加入版本控制的文件
-!src
+!doc
+!platform-*
 !pom.xml
+!README.md
 !/*.gitignore
+!Dockerfile
+*/target/
+*.iml
+.project
+.settings
+.classpath
