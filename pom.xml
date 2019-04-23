@@ -30,6 +30,8 @@
         <module>platform-common</module>
         <module>platform-service</module>
         <module>platform-portal</module>
+        <module>platform-generator</module>
+        <module>platform-generator</module>
     </modules>
 
     <dependencyManagement>
@@ -48,7 +50,7 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
-                <scope>compile</scope>
+                <scope>provided</scope>
             </dependency>
             <!--devtools-->
             <dependency>
@@ -67,6 +69,11 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
             <!-- mybatis-plus -->
