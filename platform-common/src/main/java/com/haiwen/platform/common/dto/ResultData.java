@@ -26,7 +26,7 @@ public final class ResultData<T> implements Serializable {
         this.result = data;
     }
 
-    public static <T>ResultData<T> success() {
+    public static <T>ResultData<T> ok() {
         return new ResultData<>(CodeMsg.SUCCESS);
     }
 
@@ -34,7 +34,7 @@ public final class ResultData<T> implements Serializable {
         return new ResultData<>(CodeMsg.ERROR);
     }
 
-    public static <T>ResultData<T> success(T data) {
+    public static <T>ResultData<T> ok(T data) {
         return new ResultData<>(CodeMsg.SUCCESS,data);
     }
 }

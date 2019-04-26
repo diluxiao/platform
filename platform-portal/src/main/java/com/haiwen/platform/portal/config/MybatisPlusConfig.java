@@ -6,12 +6,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 单数据源配置（jeecg.datasource.open = false时生效）
- * @author zhoujf
+ * 单数据源配置
  *
  */
 @Configuration
-@MapperScan(value={"org.jeecg.modules.**.mapper*"})
+@MapperScan({"com.haiwen.platform.service.mapper"})
 public class MybatisPlusConfig {
 
     /**

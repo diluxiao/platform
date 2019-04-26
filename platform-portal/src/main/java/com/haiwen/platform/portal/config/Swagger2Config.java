@@ -10,12 +10,13 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * @author scott
+ * @author hecan
  */
 @Slf4j
 @Configuration
@@ -45,7 +46,7 @@ public class Swagger2Config implements WebMvcConfigurer {
 				.apiInfo(apiInfo())
 				.select()
 				//此包路径下的类，才生成接口文档
-				.apis(RequestHandlerSelectors.basePackage("org.jeecg.modules"))
+				.apis(RequestHandlerSelectors.basePackage("com.haiwen.platform.portal.controller"))
 				//加了ApiOperation注解的类，才生成接口文档
 	            .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
 				.paths(PathSelectors.any())
@@ -61,16 +62,16 @@ public class Swagger2Config implements WebMvcConfigurer {
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
 				// //大标题
-				.title("Jeecg-Boot 后台服务API接口文档")
+				.title("PLATFORM后台服务API接口文档")
 				// 版本号
 				.version("1.0")
 //				.termsOfServiceUrl("NO terms of service")
 				// 描述
 				.description("restful 风格接口")
 				// 作者
-//				.contact(new Contact("scott", "http://jeecg.org", "jeecgos@163.com"))
-//                .license("The Apache License, Version 2.0")
-//                .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
+				.contact(new Contact("hecan","www.haiwen.com","diluxiao@163.com"))
+                .license("The Apache License, Version 2.0")
+                .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
 				.build();
 	}
 

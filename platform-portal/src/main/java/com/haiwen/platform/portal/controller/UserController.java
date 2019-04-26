@@ -1,10 +1,10 @@
-package com.haiwen.platform.service.template_gen;
+package com.haiwen.platform.portal.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.github.demo.common.util.RestResult;
-import com.github.demo.common.util.ValidatorUtils;
-import com.github.demo.common.util.Query;
+import com.haiwen.platform.common.dto.ResultData;
+import com.haiwen.platform.common.utils.Query;
+import com.haiwen.platform.common.utils.ValidatorUtils;
 import com.haiwen.platform.service.entity.User;
 import com.haiwen.platform.service.service.UserService;
 import io.swagger.annotations.Api;
@@ -25,7 +25,7 @@ import java.util.Arrays;
 @Slf4j
 @RestController
 @Api(tags = "系统用户表接口")
-@RequestMapping("/api/finance//user")
+@RequestMapping("/api/user")
 public class UserController {
 
     @Autowired
@@ -36,10 +36,10 @@ public class UserController {
      */
     @ApiOperation("列表")
     @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public RestResult<IPage<User>> list(@RequestBody Query query) {
+    public ResultData<IPage<User>> list(@RequestBody Query query) {
         IPage<User> page = query.getPagination();
         QueryWrapper<User> queryWrapper = query.getQueryWrapper();
-        return RestResult.ok(userService.page(page, queryWrapper));
+        return ResultData.ok(userService.page(page, queryWrapper));
     }
 
 
@@ -48,9 +48,9 @@ public class UserController {
      */
     @ApiOperation("信息")
     @RequestMapping(value = "/info/{id}", method = RequestMethod.GET)
-    public RestResult<User> info(@PathVariable("id") Integer id) {
+    public ResultData<User> info(@PathVariable("id") Integer id) {
         User entity = userService.getById(id);
-        return RestResult.ok(entity);
+        return ResultData.ok(entity);
     }
 
     /**
@@ -58,9 +58,9 @@ public class UserController {
      */
     @ApiOperation("保存")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public RestResult<String> save(@RequestBody User user) {
+    public ResultData<String> save(@RequestBody User user) {
         userService.save(user);
-        return RestResult.ok();
+        return ResultData.ok();
     }
 
     /**
@@ -68,10 +68,10 @@ public class UserController {
      */
     @ApiOperation("修改")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public RestResult<String> update(@RequestBody User user) {
+    public ResultData<String> update(@RequestBody User user) {
         ValidatorUtils.validateEntity(user);
         userService.updateById(user);
-        return RestResult.ok();
+        return ResultData.ok();
     }
 
     /**
@@ -79,9 +79,9 @@ public class UserController {
      */
     @ApiOperation("删除")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public RestResult<String> delete(@RequestBody Integer[] ids) {
+    public ResultData<String> delete(@RequestBody Integer[] ids) {
         userService.removeByIds(Arrays.asList(ids));
-        return RestResult.ok();
+        return ResultData.ok();
     }
 
 }

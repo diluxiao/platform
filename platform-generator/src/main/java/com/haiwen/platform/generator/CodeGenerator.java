@@ -1,5 +1,6 @@
 package com.haiwen.platform.generator;
 
+import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
@@ -23,7 +24,7 @@ public class CodeGenerator {
     /**
      * 表名
      */
-    private static final String TABLE_NAME = "sys_user";
+    private static final String TABLE_NAME = "sys_address";
 
     public static void main(String[] args) {
         // 代码生成器
@@ -41,8 +42,8 @@ public class CodeGenerator {
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setUrl("jdbc:mysql://localhost:3306/haiwen?serverTimezone=UTC&useUnicode=true&useSSL=false&characterEncoding=utf8");
-
-        dsc.setDriverName("com.mysql.jdbc.Driver");
+        dsc.setDbType(DbType.MYSQL);
+        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("123456");
         mpg.setDataSource(dsc);

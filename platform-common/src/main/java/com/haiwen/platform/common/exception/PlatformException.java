@@ -14,5 +14,8 @@ public class PlatformException extends RuntimeException {
         this.msg = codeMsg.getMsg();
     }
 
+    public PlatformException(String msg) {
+        this.msg = msg;
+    }
 
 }

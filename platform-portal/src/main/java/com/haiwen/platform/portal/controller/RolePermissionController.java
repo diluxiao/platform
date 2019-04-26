@@ -1,12 +1,12 @@
-package $!{package.Controller};
+package com.haiwen.platform.portal.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.haiwen.platform.common.dto.ResultData;
 import com.haiwen.platform.common.utils.Query;
 import com.haiwen.platform.common.utils.ValidatorUtils;
-import $!{package.Entity}.$!{entity};
-import $!{package.Service}.$!{entity}Service;
+import com.haiwen.platform.service.entity.RolePermission;
+import com.haiwen.platform.service.service.RolePermissionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -17,29 +17,29 @@ import java.util.Arrays;
 
 
 /**
- * $!{table.comment} 控制器
+ * 角色权限关系表 控制器
  *
- * @author $!{author}
- * @date $!{date}
+ * @author hc
+ * @date 2019-04-27
  */
 @Slf4j
 @RestController
-@Api(tags = "$!{table.comment}接口")
-@RequestMapping("/api/finance/$!{package.ModuleName}/$!{table.entityPath}")
-public class $!{entity}Controller {
+@Api(tags = "角色权限关系表接口")
+@RequestMapping("/api/rolePermission")
+public class RolePermissionController {
 
     @Autowired
-    private $!{table.serviceName} $!{table.entityPath}Service;
+    private RolePermissionService rolePermissionService;
 
     /**
      * 列表
      */
     @ApiOperation("列表")
     @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public ResultData<IPage<$!{entity}>> list(@RequestBody Query query) {
-        IPage<$!{entity}> page = query.getPagination();
-        QueryWrapper<$!{entity}> queryWrapper = query.getQueryWrapper();
-        return ResultData.ok($!{table.entityPath}Service.page(page, queryWrapper));
+    public ResultData<IPage<RolePermission>> list(@RequestBody Query query) {
+        IPage<RolePermission> page = query.getPagination();
+        QueryWrapper<RolePermission> queryWrapper = query.getQueryWrapper();
+        return ResultData.ok(rolePermissionService.page(page, queryWrapper));
     }
 
 
@@ -48,8 +48,8 @@ public class $!{entity}Controller {
      */
     @ApiOperation("信息")
     @RequestMapping(value = "/info/{id}", method = RequestMethod.GET)
-    public ResultData<$!{entity}> info(@PathVariable("id") Integer id) {
-        $!{entity} entity = $!{table.entityPath}Service.getById(id);
+    public ResultData<RolePermission> info(@PathVariable("id") Integer id) {
+        RolePermission entity = rolePermissionService.getById(id);
         return ResultData.ok(entity);
     }
 
@@ -58,8 +58,8 @@ public class $!{entity}Controller {
      */
     @ApiOperation("保存")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ResultData<String> save(@RequestBody $!{entity} $!{table.entityPath}) {
-        $!{table.entityPath}Service.save($!{table.entityPath});
+    public ResultData<String> save(@RequestBody RolePermission rolePermission) {
+        rolePermissionService.save(rolePermission);
         return ResultData.ok();
     }
 
@@ -68,9 +68,9 @@ public class $!{entity}Controller {
      */
     @ApiOperation("修改")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public ResultData<String> update(@RequestBody $!{entity} $!{table.entityPath}) {
-        ValidatorUtils.validateEntity($!{table.entityPath});
-        $!{table.entityPath}Service.updateById($!{table.entityPath});
+    public ResultData<String> update(@RequestBody RolePermission rolePermission) {
+        ValidatorUtils.validateEntity(rolePermission);
+        rolePermissionService.updateById(rolePermission);
         return ResultData.ok();
     }
 
@@ -80,7 +80,7 @@ public class $!{entity}Controller {
     @ApiOperation("删除")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public ResultData<String> delete(@RequestBody Integer[] ids) {
-        $!{table.entityPath}Service.removeByIds(Arrays.asList(ids));
+        rolePermissionService.removeByIds(Arrays.asList(ids));
         return ResultData.ok();
     }
 

@@ -5,6 +5,7 @@ import com.haiwen.platform.common.exception.PlatformException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 全局异常处理
@@ -13,9 +14,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(PlatformException.class)
-    public ResultData<?> handPlatformException(PlatformException ex) {
-        log.error(ex.getMessage(), ex);
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public ResultData<?> handPlatformException(Throwable e) {
+        log.error("系统异常：ex", e);
+        if(e instanceof PlatformException) {
+            return ResultData.errot();
+        }
         return ResultData.errot();
     }
 
