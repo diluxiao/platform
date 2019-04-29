@@ -27,9 +27,7 @@ import java.util.Arrays;
 @RestController
 @Api(tags = "系统权限表接口")
 @RequestMapping("/api/permission")
-public class PermissionController {extends BaseController
-
-    {
+public class PermissionController extends BaseController{
 
     @Autowired
     private PermissionService permissionService;
