@@ -56,7 +56,7 @@ spring:
           url: jdbc:mysql://www.haiwen.com:3306/haiwen?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
           username: root
           password: 123456
-          driver-class-name: com.mysql.jdbc.Driver
+          driver-class-name: com.mysql.cj.jdbc.Driver
           # 多数据源配置
         #multi-datasource1:
           #url: jdbc:mysql://localhost:3306/jeecg-boot2?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true
@@ -87,4 +87,3 @@ uploadpath: D://upFiles
 # logging
 logging:
   path: /logs/protal
-  level: debug
