@@ -18,4 +18,8 @@ public class PlatformException extends RuntimeException {
         this.msg = msg;
     }
 
+    public PlatformException(String msg, Throwable cause) {
+        super(msg, cause);
+    }
+
 }

@@ -1,12 +1,13 @@
-package com.haiwen.platform.portal.controller;
+package com.haiwen.platform.portal.controller.system;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.haiwen.platform.common.dto.ResultData;
 import com.haiwen.platform.common.utils.Query;
 import com.haiwen.platform.common.utils.ValidatorUtils;
-import com.haiwen.platform.service.entity.Address;
-import com.haiwen.platform.service.service.AddressService;
+import com.haiwen.platform.portal.controller.base.BaseController;
+import com.haiwen.platform.service.entity.UserRole;
+import com.haiwen.platform.service.service.UserRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -17,29 +18,29 @@ import java.util.Arrays;
 
 
 /**
- * 行政区域地址表 控制器
+ * 系统用户角色关系表 控制器
  *
  * @author hc
  * @date 2019-04-27
  */
 @Slf4j
 @RestController
-@Api(tags = "行政区域地址表接口")
-@RequestMapping("/api/address")
-public class AddressController {
+@Api(tags = "系统用户角色关系表接口")
+@RequestMapping("/api/userRole")
+public class UserRoleController extends BaseController {
 
     @Autowired
-    private AddressService addressService;
+    private UserRoleService userRoleService;
 
     /**
      * 列表
      */
     @ApiOperation("列表")
     @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public ResultData<IPage<Address>> list(@RequestBody Query query) {
-        IPage<Address> page = query.getPagination();
-        QueryWrapper<Address> queryWrapper = query.getQueryWrapper();
-        return ResultData.ok(addressService.page(page, queryWrapper));
+    public ResultData<IPage<UserRole>> list(@RequestBody Query query) {
+        IPage<UserRole> page = query.getPagination();
+        QueryWrapper<UserRole> queryWrapper = query.getQueryWrapper();
+        return ResultData.ok(userRoleService.page(page, queryWrapper));
     }
 
 
@@ -48,8 +49,8 @@ public class AddressController {
      */
     @ApiOperation("信息")
     @RequestMapping(value = "/info/{id}", method = RequestMethod.GET)
-    public ResultData<Address> info(@PathVariable("id") Integer id) {
-        Address entity = addressService.getById(id);
+    public ResultData<UserRole> info(@PathVariable("id") Integer id) {
+        UserRole entity = userRoleService.getById(id);
         return ResultData.ok(entity);
     }
 
@@ -58,8 +59,8 @@ public class AddressController {
      */
     @ApiOperation("保存")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ResultData<String> save(@RequestBody Address address) {
-        addressService.save(address);
+    public ResultData<String> save(@RequestBody UserRole userRole) {
+        userRoleService.save(userRole);
         return ResultData.ok();
     }
 
@@ -68,9 +69,9 @@ public class AddressController {
      */
     @ApiOperation("修改")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public ResultData<String> update(@RequestBody Address address) {
-        ValidatorUtils.validateEntity(address);
-        addressService.updateById(address);
+    public ResultData<String> update(@RequestBody UserRole userRole) {
+        ValidatorUtils.validateEntity(userRole);
+        userRoleService.updateById(userRole);
         return ResultData.ok();
     }
 
@@ -80,7 +81,7 @@ public class AddressController {
     @ApiOperation("删除")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public ResultData<String> delete(@RequestBody Integer[] ids) {
-        addressService.removeByIds(Arrays.asList(ids));
+        userRoleService.removeByIds(Arrays.asList(ids));
         return ResultData.ok();
     }
 

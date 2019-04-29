@@ -1,12 +1,9 @@
 package com.haiwen.platform.service.entity;
 
-import com.baomidou.mybatisplus.annotation.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.haiwen.platform.service.base.BaseEntity;
 import lombok.Data;
-import java.io.Serializable;
-import java.util.Date;
-import java.time.LocalDateTime;
 
 /**
  * 系统权限表
@@ -16,7 +13,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @TableName("sys_permission")
-public class Permission implements Serializable {
+public class Permission extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
     /**

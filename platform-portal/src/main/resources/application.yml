@@ -87,3 +87,4 @@ uploadpath: D://upFiles
 # logging
 logging:
   path: /logs/protal
+  level: debug

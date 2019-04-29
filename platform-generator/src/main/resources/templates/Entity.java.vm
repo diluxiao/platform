@@ -2,7 +2,7 @@ package $!{package.Entity};
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.haiwen.platform.service.base.BaseEntity;
 #if($!{entityLombokModel})
 import lombok.Data;
 #end
@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Data
 #end
 @TableName("$!{table.name}")
-public class $!{entity} implements Serializable {
+public class $!{entity} extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 #foreach ($field in $!{table.fields})

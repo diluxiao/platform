@@ -1,10 +1,11 @@
-package com.haiwen.platform.portal.controller;
+package com.haiwen.platform.portal.controller.system;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.haiwen.platform.common.dto.ResultData;
 import com.haiwen.platform.common.utils.Query;
 import com.haiwen.platform.common.utils.ValidatorUtils;
+import com.haiwen.platform.portal.controller.base.BaseController;
 import com.haiwen.platform.service.entity.RolePermission;
 import com.haiwen.platform.service.service.RolePermissionService;
 import io.swagger.annotations.Api;
@@ -26,7 +27,7 @@ import java.util.Arrays;
 @RestController
 @Api(tags = "角色权限关系表接口")
 @RequestMapping("/api/rolePermission")
-public class RolePermissionController {
+public class RolePermissionController extends BaseController {
 
     @Autowired
     private RolePermissionService rolePermissionService;

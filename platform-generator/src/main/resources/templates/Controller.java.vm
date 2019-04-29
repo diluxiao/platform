@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.haiwen.platform.common.dto.ResultData;
 import com.haiwen.platform.common.utils.Query;
 import com.haiwen.platform.common.utils.ValidatorUtils;
+import com.haiwen.platform.portal.controller.base.BaseController;
 import $!{package.Entity}.$!{entity};
 import $!{package.Service}.$!{entity}Service;
 import io.swagger.annotations.Api;
@@ -25,8 +26,8 @@ import java.util.Arrays;
 @Slf4j
 @RestController
 @Api(tags = "$!{table.comment}接口")
-@RequestMapping("/api/finance/$!{package.ModuleName}/$!{table.entityPath}")
-public class $!{entity}Controller {
+@RequestMapping("/api/$!{package.ModuleName}/$!{table.entityPath}")
+public class $!{entity}Controller extends BaseController {
 
     @Autowired
     private $!{table.serviceName} $!{table.entityPath}Service;

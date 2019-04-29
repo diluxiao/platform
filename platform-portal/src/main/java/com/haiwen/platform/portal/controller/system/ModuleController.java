@@ -1,12 +1,13 @@
-package com.haiwen.platform.portal.controller;
+package com.haiwen.platform.portal.controller.system;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.haiwen.platform.common.dto.ResultData;
 import com.haiwen.platform.common.utils.Query;
 import com.haiwen.platform.common.utils.ValidatorUtils;
-import com.haiwen.platform.service.entity.Role;
-import com.haiwen.platform.service.service.RoleService;
+import com.haiwen.platform.portal.controller.base.BaseController;
+import com.haiwen.platform.service.entity.Module;
+import com.haiwen.platform.service.service.ModuleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -17,29 +18,29 @@ import java.util.Arrays;
 
 
 /**
- * 系统角色表 控制器
+ * 系统模块表 控制器
  *
  * @author hc
  * @date 2019-04-27
  */
 @Slf4j
 @RestController
-@Api(tags = "系统角色表接口")
-@RequestMapping("/api/role")
-public class RoleController {
+@Api(tags = "系统模块表接口")
+@RequestMapping("/api/module")
+public class ModuleController extends BaseController {
 
     @Autowired
-    private RoleService roleService;
+    private ModuleService moduleService;
 
     /**
      * 列表
      */
     @ApiOperation("列表")
     @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public ResultData<IPage<Role>> list(@RequestBody Query query) {
-        IPage<Role> page = query.getPagination();
-        QueryWrapper<Role> queryWrapper = query.getQueryWrapper();
-        return ResultData.ok(roleService.page(page, queryWrapper));
+    public ResultData<IPage<Module>> list(@RequestBody Query query) {
+        IPage<Module> page = query.getPagination();
+        QueryWrapper<Module> queryWrapper = query.getQueryWrapper();
+        return ResultData.ok(moduleService.page(page, queryWrapper));
     }
 
 
@@ -48,8 +49,8 @@ public class RoleController {
      */
     @ApiOperation("信息")
     @RequestMapping(value = "/info/{id}", method = RequestMethod.GET)
-    public ResultData<Role> info(@PathVariable("id") Integer id) {
-        Role entity = roleService.getById(id);
+    public ResultData<Module> info(@PathVariable("id") Integer id) {
+        Module entity = moduleService.getById(id);
         return ResultData.ok(entity);
     }
 
@@ -58,8 +59,8 @@ public class RoleController {
      */
     @ApiOperation("保存")
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ResultData<String> save(@RequestBody Role role) {
-        roleService.save(role);
+    public ResultData<String> save(@RequestBody Module module) {
+        moduleService.save(module);
         return ResultData.ok();
     }
 
@@ -68,9 +69,9 @@ public class RoleController {
      */
     @ApiOperation("修改")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public ResultData<String> update(@RequestBody Role role) {
-        ValidatorUtils.validateEntity(role);
-        roleService.updateById(role);
+    public ResultData<String> update(@RequestBody Module module) {
+        ValidatorUtils.validateEntity(module);
+        moduleService.updateById(module);
         return ResultData.ok();
     }
 
@@ -80,7 +81,7 @@ public class RoleController {
     @ApiOperation("删除")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public ResultData<String> delete(@RequestBody Integer[] ids) {
-        roleService.removeByIds(Arrays.asList(ids));
+        moduleService.removeByIds(Arrays.asList(ids));
         return ResultData.ok();
     }
 

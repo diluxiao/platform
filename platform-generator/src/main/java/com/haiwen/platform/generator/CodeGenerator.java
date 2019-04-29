@@ -95,7 +95,7 @@ public class CodeGenerator {
 //        strategy.setInclude(new String[] { }); // 需要生成的表,{}中不写表名则全部生成-------------------------
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         // 自定义实体父类
-        // strategy.setSuperEntityClass("com.spf.model.Entity");
+         strategy.setSuperEntityClass("com.haiwen.platform.service.base.BaseEntity");
         // 自定义实体，公共字段
          strategy.setSuperEntityColumns(new String[] { "trace_id", "create_by", "create_time", "update_by", "update_time", "del_flag"});
         // 自定义 mapper 父类
@@ -105,7 +105,7 @@ public class CodeGenerator {
         // 自定义 service 实现类父类
         // strategy.setSuperServiceImplClass("com.baomidou.demo.TestServiceImpl");
         // 自定义 controller 父类
-        // strategy.setSuperControllerClass("com.baomidou.demo.TestController");
+         strategy.setSuperControllerClass("com.haiwen.platform.portal.controller.base.BaseController");
         // 【实体】是否生成字段常量（默认 false）
         // public static final String ID = "test_id";
         // strategy.setEntityColumnConstant(true);

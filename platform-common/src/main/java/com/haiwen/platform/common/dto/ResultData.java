@@ -26,12 +26,17 @@ public final class ResultData<T> implements Serializable {
         this.result = data;
     }
 
+
     public static <T>ResultData<T> ok() {
         return new ResultData<>(CodeMsg.SUCCESS);
     }
 
     public static <T>ResultData<T> errot() {
         return new ResultData<>(CodeMsg.ERROR);
+    }
+
+    public static <T>ResultData<T> errot(CodeMsg codeMsg) {
+        return new ResultData<>(codeMsg);
     }
 
     public static <T>ResultData<T> ok(T data) {
